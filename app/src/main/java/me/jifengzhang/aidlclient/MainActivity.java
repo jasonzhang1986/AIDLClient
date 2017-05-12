@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.View;
 
 import me.jifengzhang.aidlserver.IRemoteService;
+import me.jifengzhang.aidlserver.RemoteData;
 
 public class MainActivity extends Activity {
 
@@ -30,8 +31,8 @@ public class MainActivity extends Activity {
             public void onClick(View v) {
                 if(mService!=null) {
                     try {
-                        String msg = mService.getRemoteValue(1);
-                        Log.i("AIDLDemo","Client msg = "+ msg);
+                        RemoteData data = new RemoteData(1, "Android");
+                        mService.addData(data);
                     } catch (RemoteException e) {
                         e.printStackTrace();
                     }
